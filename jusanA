@@ -1,0 +1,27 @@
+1. Creating a Database 
+
+> use myDatabase 
+Output: 
+switched to db myDatabase
+
+2. Drop a Database 
+To delete the currently active database: 
+// Drops the selected database 
+db.dropDatabase() 
+Output: 
+{ "dropped" : "myDatabase", "ok" : 1 } 
+
+3. Create a Collection 
+Collections are created either automatically when a document is inserted, or explicitly using 
+createCollection(). 
+// Explicitly create a collection 
+db.createCollection("students") 
+Output: 
+{ "ok" : 1 }
+
+4. Drop a Collection 
+To remove a collection and all its documents: 
+// Drop the "students" collection 
+db.students.drop() 
+Output: 
+true
