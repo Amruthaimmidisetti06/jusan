@@ -1,0 +1,50 @@
+Step 1: Retrieve Records using find() 
+Task: Fetch all records from the students collection. 
+Query: 
+db.students.find() 
+Expected Output (sample): 
+{ "_id": 1, "name": "Ravi", "department": "CSE" } 
+{ "_id": 2, "name": "Anita", "department": "CSE" }
+
+Step 2: Apply Conditions with find() 
+Task: Fetch only students from the CSE department. 
+Query: 
+db.students.find({ "department": "CSE" }) 
+Expected Output (sample): 
+{ "_id": 3, "name": "Sita", "department": "CSE" } 
+{ "_id": 4, "name": "Kiran", "department": "CSE" } 
+
+Step 3: Limit Results using limit() 
+Task: Display only the first 3 records. 
+Query: 
+db.students.find().limit(3) 
+Expected 
+Output: 
+(Only 3 student documents shown, even if more exist in collection) 
+
+Step 4: Sort Records using sort() 
+Task: Sort students by name in ascending order. 
+Query: 
+db.students.find().sort({ "name": 1 })
+Expected Output (sample): 
+{ "_id": 7, "name": "Anita", "department": "ECE" } 
+{ "_id": 2, "name": "Kiran", "department": "CSE" } 
+{ "_id": 4, "name": "Ravi", "department": "CSE" } 
+
+
+Step 5: Create Index using createIndex() 
+Task: Create an index on the name field to speed up searches. 
+Query: 
+db.students.createIndex({ "name": 1 }) 
+Expected Output: 
+"name_1" 
+
+Step 6: Aggregate Records using aggregate() 
+Task: Count the number of students in each department. 
+Query: 
+db.students.aggregate([ 
+{ $group: { _id: "$department", total: { $sum: 1 } } } 
+]) 
+Expected Output (sample): 
+{ "_id": "CSE", "total": 25 } 
+{ "_id": "ECE", "total": 18 }
