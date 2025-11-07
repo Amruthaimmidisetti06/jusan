@@ -1,0 +1,76 @@
+#3a
+const express = require('express'); 
+const app = express(); 
+
+app.get('/', (req, res) => { 
+res.send('Hello! This is the home page.'); 
+}); 
+app.get('/user/:name', (req, res) => { 
+const userName = req.params.name; 
+res.send(`Hello, ${userName}!`); 
+}); 
+app.get('/search', (req, res) => { 
+const keyword = req.query.q; 
+res.send(`You searched for: ${keyword}`); 
+}); 
+app.get('/url', (req, res) => { 
+const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl; 
+res.send(`Full URL: ${fullUrl}`); 
+}); 
+// Start server 
+app.listen(3000, () => { 
+console.log('Server is running on http://localhost:3000'); 
+}); 
+
+
+
+#3b
+const express = require("express");
+const app = express();
+app.use(express.json());
+
+let items = [];  // temporary storage
+
+// GET – retrieve all data
+app.get("/items", (req, res) => {
+  res.json(items);
+});
+
+// POST – accept data
+app.post("/items", (req, res) => {
+  items.push(req.body); // add into array
+  res.json({ message: "Added Successfully" });
+});
+
+// DELETE – delete data by id
+app.delete("/items/:id", (req, res) => {
+  const id = req.params.id;
+  items = items.filter((x) => x.id != id);
+  res.json({ message: "Deleted Successfully" });
+});
+
+app.listen(3000, () => {
+  console.log("Server running on http://localhost:3000");
+});
+
+
+
+#3c
+const express = require('express'); 
+const app = express(); 
+const port = 3000; 
+
+const loggerMiddleware = (req, res, next) => { 
+console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`); 
+next(); // Go to next middleware or route handler 
+}; 
+app.use(loggerMiddleware); 
+app.get('/', (req, res) => { 
+res.send('Hello, this is the home page!'); 
+}); 
+app.get('/about', (req, res) => { 
+res.send('This is the about page.'); 
+}); 
+app.listen(port, () => { 
+console.log(`Server is running at http://localhost:${port}`); 
+}); 
