@@ -1,0 +1,105 @@
+#8a
+import React, { useState } from 'react'; 
+ 
+function Counter() { 
+    const [count, setCount] = useState(0); 
+ 
+    return ( 
+        <div> 
+            <p>Count: {count}</p> 
+            <button onClick={() => setCount(count + 1)}>Increment</button> 
+        </div> 
+    ); 
+} 
+ 
+export default Counter;
+
+function Greeting({ name }) { 
+return <h1>Hello, {name}!</h1>; 
+} 
+function App() { 
+return <Greeting name="Jiya" />; 
+} 
+export default App; 
+Output
+
+
+
+#8b
+----------------------
+container {
+  text-align: center;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+title {
+  color: #2e3e50;
+  font-size: 2rem;
+}
+----------------------
+$list-color: #27ae60;
+
+.data-list {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: lighten($list-color, 30%);
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+
+  &:hover {
+    background: darken($list-color, 10%);
+    color: #fff;
+    cursor: pointer;
+  }
+}
+-------------------------------------------
+import React from "react";
+import "./App.css";  // CSS
+import "./App.scss"; // Sass
+
+function App() {
+  const fruits = ["Apple", "Banana", "Cherry", "Mango", "Orange"];
+
+  return (
+    <div className="container">
+      <h1 className="title">Fruit List</h1>
+      <ul className="data-list">
+        {fruits.map((fruit, index) => (
+          <li key={index}>{fruit}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default App;
+
+
+#8c
+import React from "react";
+import "./App.css";  // CSS
+import "./App.scss"; // Sass
+
+function App() {
+  const fruits = ["Apple", "Banana", "Cherry", "Mango", "Orange"];
+
+  return (
+    <div className="container">
+      <h1 className="title">Fruit List</h1>
+      <ul className="data-list">
+        {fruits.map((fruit, index) => (
+          <li key={index}>{fruit}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default App;
+
