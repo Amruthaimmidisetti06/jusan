@@ -1,0 +1,47 @@
+#1a
+const http = require('node:http'); 
+const hostname = '127.0.0.1'; 
+const port = 3000; 
+const server = http.createServer((req, res) => { 
+res.statusCode = 200; 
+res.setHeader('Content-Type', 'text/plain'); 
+res.end('Hello, World!\n'); 
+}); 
+server.listen(port, hostname, () => { 
+console.log(`Server running at http://${hostname}:${port}/`); 
+});  
+
+
+#1b
+const http = require('http'); 
+const PORT = 4000; 
+const data = { 
+    id: 101, 
+    name: "HTTP Data Transfer", 
+    status: "Success", 
+    description: "This data is sent over HTTP using Node.js http module" 
+}; 
+const server = http.createServer((req, res) => { 
+    console.log(`Request received: ${req.method} ${req.url}`); 
+    res.writeHead(200, { 
+        'Content-Type': 'application/json', 
+        'Access-Control-Allow-Origin': '*' 
+    }); 
+ res.end(JSON.stringify(data)); 
+}); 
+server.listen(PORT, () => { 
+    console.log(`Server running at http://localhost:${PORT}/`); 
+}); 
+
+#1c
+const fs = require('fs'); 
+const path = require('path'); 
+const fileName = 'src.txt'; 
+const content = 'HTML, CSS, Javascript, Typescript, MongoDB, Express.js, React.js, Node.js'; 
+fs.writeFile(path.join(__dirname, fileName), content, (err) => { 
+if (err) { 
+console.error('Error writing file:', err); 
+return; 
+} 
+console.log(`${fileName} created successfully with content.`); 
+});
